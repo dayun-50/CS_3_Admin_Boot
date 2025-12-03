@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import admin.dash.ReportCountDTO;
+
 @Repository
 public class ReportDAO {
     @Autowired
@@ -25,5 +27,13 @@ public class ReportDAO {
 
     public List<ReportDTO> commentDetail(int comment_seq) {
         return mybatis.selectList("report.commentDetail", comment_seq);
+    }
+
+    public List<ReportCountDTO> boardReportList() {
+        return mybatis.selectList("report.boardReportList");
+    }
+
+    public List<ReportCountDTO> commentReportList() {
+        return mybatis.selectList("report.commentReportList");
     }
 }

@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import admin.dash.ReportCountDTO;
+
 @Repository
 public class UserDAO {
     @Autowired
@@ -17,5 +19,9 @@ public class UserDAO {
 
     public int secessionUser(UserDTO dto){
         return mybatis.delete("user.secessionUser", dto);
+    }
+
+    public List<ReportCountDTO> ageGroup(){
+        return mybatis.selectList("user.ageGroup");
     }
 }

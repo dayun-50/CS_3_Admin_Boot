@@ -64,5 +64,21 @@ ORDER BY is_deleted DESC
     <select id="commentDetail" resultType="admin.report.ReportDTO">
       select * from report where comment_seq = #{comment_seq}
     </select>
+    
+    <select id="boardReportList" resultType="admin.dash.ReportCountDTO">
+       SELECT report_type, COUNT(*) AS count
+       FROM report
+       WHERE board_seq IS NOT NULL
+       GROUP BY report_type
+       ORDER BY count DESC
+    </select>
+
+    <select id="commentReportList" resultType="admin.dash.ReportCountDTO">
+       SELECT report_type, COUNT(*) AS count
+       FROM report
+       WHERE comment_seq IS NOT NULL
+       GROUP BY report_type
+       ORDER BY count DESC
+    </select>
 
 </mapper>

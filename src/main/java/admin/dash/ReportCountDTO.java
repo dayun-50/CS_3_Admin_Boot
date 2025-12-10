@@ -7,5 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReportCountDTO {
     private String report_type;
-    private int count; // COUNT(*) 결과
+    private int count; 
 }

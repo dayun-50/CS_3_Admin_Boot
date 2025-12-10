@@ -38,27 +38,27 @@
     </select>
 
      <select id="commentList" resultType="admin.report.CommentDTO">
-SELECT
-    c.comment_seq,
-    c.board_seq,
-    c.parent_comment_seq,
-    u.nickname AS user_id,
-    c.comment_content,
-    c.created_at,
-    COUNT(r.report_seq) AS is_deleted
-FROM comment c
-INNER JOIN report r
-    ON c.comment_seq = r.comment_seq
-INNER JOIN user u
-    ON c.user_id = u.user_id
-GROUP BY 
-    c.comment_seq,
-    c.board_seq,
-    c.parent_comment_seq,
-    u.nickname,
-    c.created_at,
-    c.comment_content
-ORDER BY is_deleted DESC
+        SELECT
+            c.comment_seq,
+            c.board_seq,
+            c.parent_comment_seq,
+            u.nickname AS user_id,
+            c.comment_content,
+            c.created_at,
+            COUNT(r.report_seq) AS is_deleted
+        FROM comment c
+        INNER JOIN report r
+            ON c.comment_seq = r.comment_seq
+        INNER JOIN user u
+            ON c.user_id = u.user_id
+        GROUP BY 
+            c.comment_seq,
+            c.board_seq,
+            c.parent_comment_seq,
+            u.nickname,
+            c.created_at,
+            c.comment_content
+        ORDER BY is_deleted DESC
     </select>   
 
     <select id="commentDetail" resultType="admin.report.ReportDTO">

@@ -22,17 +22,14 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http // security 필터 역할
+        http 
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        // JWT 토큰 기반 인증을 사용하는 서버에서 불필요한 Session 생성 및 검증 로직을 차단하여 자원 낭비 방지
 
-        http.authorizeHttpRequests(auth -> { // 인증.인가 처리 부분
-            // auth.requestMatchers("/members/**").authenticated()
-            //         .requestMatchers("/admin/**").hasRole("ADMIN")
+        http.authorizeHttpRequests(auth -> { 
                     auth.anyRequest().permitAll();
         });
 
@@ -45,8 +42,8 @@ public class SecurityConfig {
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
 
-		config.addAllowedOrigin("http://10.10.55.103:3000"); // 모든 출처 -> 나중에 서버맞춰지면 설정
-		config.addAllowedOrigin("http://10.5.5.4:3000"); // 모든 출처 -> 나중에 서버맞춰지면 설정
+		config.addAllowedOrigin("http://10.10.55.103:3000"); 
+		config.addAllowedOrigin("http://10.5.5.4:3000"); 
 		config.addAllowedOrigin("http://10.10.55.89:3000");
         config.addAllowedOrigin("http://10.5.5.4:3001");
         config.addAllowedMethod("*");

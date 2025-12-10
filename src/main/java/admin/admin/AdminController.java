@@ -15,9 +15,7 @@ public class AdminController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AdminDTO dto) {
-        System.out.println(dto);
         String token = adminService.login(dto);
-        System.out.println(token);
         return token != null ? ResponseEntity.ok(token) : ResponseEntity.notFound().build();
     }
 }

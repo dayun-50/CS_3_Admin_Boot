@@ -30,19 +30,19 @@
 
     <select id="ageGroup" resultType="admin.dash.ReportCountDTO">
        SELECT
-    CASE 
-        WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 0 AND 9 THEN '~10 대'
-        WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 10 AND 19 THEN '10 대'
-        WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 20 AND 29 THEN '20 대'
-        WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 30 AND 39 THEN '30 대'
-        WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 40 AND 49 THEN '40 대'
-        WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 50 AND 59 THEN '50 대'
-        WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 60 AND 69 THEN '60 대'
-        ELSE '70 대~'
-    END AS report_type,
-    COUNT(*) AS count
-FROM user
-GROUP BY report_type
+            CASE 
+                WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 0 AND 9 THEN '~10 대'
+                WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 10 AND 19 THEN '10 대'
+                WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 20 AND 29 THEN '20 대'
+                WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 30 AND 39 THEN '30 대'
+                WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 40 AND 49 THEN '40 대'
+                WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 50 AND 59 THEN '50 대'
+                WHEN FLOOR(DATEDIFF(CURDATE(), birth_date) / 365.25) BETWEEN 60 AND 69 THEN '60 대'
+                ELSE '70 대~'
+            END AS report_type,
+            COUNT(*) AS count
+        FROM user
+        GROUP BY report_type
     </select>
 
 </mapper>
